@@ -1,0 +1,607 @@
+dataset,value
+uniform,10.0
+uniform,10.800000001
+uniform,11.600000002
+uniform,12.400000003
+uniform,13.200000004
+uniform,14.000000005
+uniform,14.800000006000001
+uniform,15.600000007000002
+uniform,16.400000008
+uniform,17.200000009
+uniform,18.00000001
+uniform,18.800000011
+uniform,19.600000012000002
+uniform,20.400000013
+uniform,21.200000014000004
+uniform,22.000000015
+uniform,22.800000016000002
+uniform,23.600000017000003
+uniform,24.400000018
+uniform,25.200000019
+uniform,26.00000002
+uniform,26.800000021000002
+uniform,27.600000022
+uniform,28.400000023
+uniform,29.200000023999998
+uniform,30.000000025
+uniform,30.800000026
+uniform,31.600000027
+uniform,32.400000028
+uniform,33.200000029
+uniform,34.00000003
+uniform,34.800000030999996
+uniform,35.600000032000004
+uniform,36.400000033
+uniform,37.200000034000006
+uniform,38.000000035
+uniform,38.800000036
+uniform,39.600000037
+uniform,40.400000038
+uniform,41.200000039
+uniform,42.00000004
+uniform,42.800000041
+uniform,43.600000042000005
+uniform,44.400000043
+uniform,45.200000044
+uniform,46.000000045
+uniform,46.800000045999994
+uniform,47.600000047
+uniform,48.400000048
+uniform,49.200000049
+uniform,50.00000005
+uniform,50.800000051
+uniform,51.600000052
+uniform,52.400000053
+uniform,53.200000054
+uniform,54.000000055
+uniform,54.800000055999995
+uniform,55.600000057
+uniform,56.400000057999996
+uniform,57.200000059000004
+uniform,58.00000006
+uniform,58.800000061
+uniform,59.600000062
+uniform,60.400000063
+uniform,61.200000064
+uniform,62.000000065
+uniform,62.800000065999996
+uniform,63.600000067
+uniform,64.40000006800001
+uniform,65.200000069
+uniform,66.00000007
+uniform,66.800000071
+uniform,67.600000072
+uniform,68.400000073
+uniform,69.200000074
+uniform,70.000000075
+uniform,70.800000076
+uniform,71.60000007699999
+uniform,72.400000078
+uniform,73.200000079
+uniform,74.00000008
+uniform,74.800000081
+uniform,75.600000082
+uniform,76.40000008300001
+uniform,77.20000008400001
+uniform,78.000000085
+uniform,78.800000086
+uniform,79.600000087
+uniform,80.400000088
+uniform,81.200000089
+uniform,82.00000009
+uniform,82.800000091
+uniform,83.60000009199999
+uniform,84.400000093
+uniform,85.200000094
+uniform,86.000000095
+uniform,86.80000009599999
+uniform,87.60000009699999
+uniform,88.400000098
+uniform,89.20000009900001
+uniform,90.0000001
+hollow (U shape),10.0
+hollow (U shape),10.004638590847538
+hollow (U shape),10.028123151908638
+hollow (U shape),10.080705150463556
+hollow (U shape),10.170506900875903
+hollow (U shape),10.30458463519454
+hollow (U shape),10.489304522052706
+hollow (U shape),10.730534753497718
+hollow (U shape),11.03376052119635
+hollow (U shape),11.40415968709105
+hollow (U shape),11.846655889561234
+hollow (U shape),12.36595759519022
+hollow (U shape),12.966587856197757
+hollow (U shape),13.65290763156444
+hollow (U shape),14.429134484712256
+hollow (U shape),15.2993578592884
+hollow (U shape),16.267551758623988
+hollow (U shape),17.337585413439655
+hollow (U shape),18.513232362434046
+hollow (U shape),19.798178261065924
+hollow (U shape),21.196027657179172
+hollow (U shape),22.710309917153477
+hollow (U shape),24.34448444607215
+hollow (U shape),26.101945315495982
+hollow (U shape),27.98602538983563
+hollow (U shape),30.000000025
+hollow (U shape),30.004638615847536
+hollow (U shape),30.028123176908636
+hollow (U shape),30.080705175463553
+hollow (U shape),30.1705069258759
+hollow (U shape),30.30458466019454
+hollow (U shape),30.489304547052704
+hollow (U shape),30.730534778497717
+hollow (U shape),31.033760546196348
+hollow (U shape),31.404159712091047
+hollow (U shape),31.846655914561232
+hollow (U shape),32.36595762019022
+hollow (U shape),32.96658788119775
+hollow (U shape),33.652907656564444
+hollow (U shape),34.429134509712256
+hollow (U shape),35.299357884288405
+hollow (U shape),36.267551783623986
+hollow (U shape),37.33758543843966
+hollow (U shape),38.513232387434044
+hollow (U shape),39.79817828606592
+hollow (U shape),41.19602768217917
+hollow (U shape),42.71030994215347
+hollow (U shape),44.34448447107215
+hollow (U shape),46.10194534049598
+hollow (U shape),47.98602541483563
+hollow (U shape),50.00000005
+hollow (U shape),55.885898873253
+hollow (U shape),57.6595665462942
+hollow (U shape),58.935500258902884
+hollow (U shape),59.96771452756568
+hollow (U shape),60.84979159424442
+hollow (U shape),61.62814047325144
+hollow (U shape),62.32963015723241
+hollow (U shape),62.97140410554538
+hollow (U shape),63.56516085106546
+hollow (U shape),64.11928791283854
+hollow (U shape),64.64003161366401
+hollow (U shape),65.13218588792533
+hollow (U shape),65.59952117662043
+hollow (U shape),66.04506377554917
+hollow (U shape),66.47128464882371
+hollow (U shape),66.88023107691971
+hollow (U shape),67.27362090664266
+hollow (U shape),67.65291158251463
+hollow (U shape),68.01935172119234
+hollow (U shape),68.37402032193165
+hollow (U shape),68.71785704176627
+hollow (U shape),69.05168589647224
+hollow (U shape),69.37623404632478
+hollow (U shape),69.6921468536018
+hollow (U shape),70.000000075
+hollow (U shape),75.885898898253
+hollow (U shape),77.6595665712942
+hollow (U shape),78.93550028390288
+hollow (U shape),79.96771455256568
+hollow (U shape),80.84979161924443
+hollow (U shape),81.62814049825144
+hollow (U shape),82.3296301822324
+hollow (U shape),82.97140413054538
+hollow (U shape),83.56516087606546
+hollow (U shape),84.11928793783854
+hollow (U shape),84.64003163866401
+hollow (U shape),85.13218591292534
+hollow (U shape),85.59952120162042
+hollow (U shape),86.04506380054916
+hollow (U shape),86.47128467382372
+hollow (U shape),86.88023110191972
+hollow (U shape),87.27362093164265
+hollow (U shape),87.65291160751462
+hollow (U shape),88.01935174619234
+hollow (U shape),88.37402034693166
+hollow (U shape),88.71785706676626
+hollow (U shape),89.05168592147223
+hollow (U shape),89.37623407132479
+hollow (U shape),89.6921468786018
+hollow (U shape),90.0000001
+bell (mass in the middle),10.0
+bell (mass in the middle),17.13985172790655
+bell (mass in the middle),18.912895027325376
+bell (mass in the middle),20.147708761943033
+bell (mass in the middle),21.126239143266872
+bell (mass in the middle),21.94977132239897
+bell (mass in the middle),22.66769485114505
+bell (mass in the middle),23.308238210855485
+bell (mass in the middle),23.889224219931613
+bell (mass in the middle),24.42270750981039
+bell (mass in the middle),24.91726459789739
+bell (mass in the middle),25.379239224498725
+bell (mass in the middle),25.81347047135804
+bell (mass in the middle),26.223743295785273
+bell (mass in the middle),26.613080315932322
+bell (mass in the middle),26.98393801583502
+bell (mass in the middle),27.338342900298155
+bell (mass in the middle),27.67798854496108
+bell (mass in the middle),28.004306389134033
+bell (mass in the middle),28.318518424794433
+bell (mass in the middle),28.62167711112053
+bell (mass in the middle),28.914696089328054
+bell (mass in the middle),29.198374151076056
+bell (mass in the middle),29.473414178662853
+bell (mass in the middle),29.740438282569848
+bell (mass in the middle),30.000000025
+bell (mass in the middle),37.13985175290655
+bell (mass in the middle),38.912895052325375
+bell (mass in the middle),40.147708786943035
+bell (mass in the middle),41.12623916826687
+bell (mass in the middle),41.94977134739897
+bell (mass in the middle),42.66769487614505
+bell (mass in the middle),43.308238235855484
+bell (mass in the middle),43.88922424493161
+bell (mass in the middle),44.42270753481039
+bell (mass in the middle),44.91726462289739
+bell (mass in the middle),45.379239249498724
+bell (mass in the middle),45.81347049635804
+bell (mass in the middle),46.223743320785275
+bell (mass in the middle),46.61308034093232
+bell (mass in the middle),46.98393804083502
+bell (mass in the middle),47.33834292529816
+bell (mass in the middle),47.67798856996108
+bell (mass in the middle),48.004306414134035
+bell (mass in the middle),48.31851844979443
+bell (mass in the middle),48.62167713612053
+bell (mass in the middle),48.91469611432805
+bell (mass in the middle),49.19837417607606
+bell (mass in the middle),49.47341420366285
+bell (mass in the middle),49.74043830756985
+bell (mass in the middle),50.00000005
+bell (mass in the middle),50.00243672804156
+bell (mass in the middle),50.01697005656878
+bell (mass in the middle),50.0528126452138
+bell (mass in the middle),50.118186030291916
+bell (mass in the middle),50.2207568008338
+bell (mass in the middle),50.36780831120677
+bell (mass in the middle),50.5663338588363
+bell (mass in the middle),50.82309500387706
+bell (mass in the middle),51.144661353366295
+bell (mass in the middle),51.53743933549623
+bell (mass in the middle),52.00769391640555
+bell (mass in the middle),52.561565532041776
+bell (mass in the middle),53.20508363267836
+bell (mass in the middle),53.944177745617814
+bell (mass in the middle),54.78468666783262
+bell (mass in the middle),55.73236621623573
+bell (mass in the middle),56.79289584328468
+bell (mass in the middle),57.971884344750784
+bell (mass in the middle),59.274874830406894
+bell (mass in the middle),60.70734908853464
+bell (mass in the middle),62.27473144621938
+bell (mass in the middle),63.98239220599574
+bell (mass in the middle),65.83565072330364
+bell (mass in the middle),67.83977817691819
+bell (mass in the middle),70.000000075
+bell (mass in the middle),70.00243675304156
+bell (mass in the middle),70.01697008156877
+bell (mass in the middle),70.0528126702138
+bell (mass in the middle),70.11818605529193
+bell (mass in the middle),70.2207568258338
+bell (mass in the middle),70.36780833620678
+bell (mass in the middle),70.5663338838363
+bell (mass in the middle),70.82309502887706
+bell (mass in the middle),71.14466137836631
+bell (mass in the middle),71.53743936049622
+bell (mass in the middle),72.00769394140555
+bell (mass in the middle),72.56156555704179
+bell (mass in the middle),73.20508365767836
+bell (mass in the middle),73.94417777061781
+bell (mass in the middle),74.78468669283261
+bell (mass in the middle),75.73236624123574
+bell (mass in the middle),76.79289586828467
+bell (mass in the middle),77.97188436975078
+bell (mass in the middle),79.27487485540689
+bell (mass in the middle),80.70734911353465
+bell (mass in the middle),82.27473147121937
+bell (mass in the middle),83.98239223099574
+bell (mass in the middle),85.83565074830365
+bell (mass in the middle),87.8397782019182
+bell (mass in the middle),90.0000001
+top-heavy,10.0
+top-heavy,18.94427191099916
+top-heavy,20.636591795889977
+top-heavy,21.77132382853085
+top-heavy,22.64911064467352
+top-heavy,23.374806104528442
+top-heavy,23.998542052322335
+top-heavy,24.54854305725652
+top-heavy,25.042412380345574
+top-heavy,25.49193339382967
+top-heavy,25.905414585341013
+top-heavy,26.28895280816999
+top-heavy,26.64716581315127
+top-heavy,26.9836422029756
+top-heavy,27.301230922288443
+top-heavy,27.60223475086787
+top-heavy,27.88854383599832
+top-heavy,28.161730387463408
+top-heavy,28.42311742438763
+top-heavy,28.673829714144322
+top-heavy,28.91483220006352
+top-heavy,29.14695945576319
+top-heavy,29.370938584338024
+top-heavy,29.587407249711184
+top-heavy,29.79692803935906
+top-heavy,30.000000025
+top-heavy,38.94427193599916
+top-heavy,40.636591820889976
+top-heavy,41.77132385353085
+top-heavy,42.64911066967352
+top-heavy,43.374806129528444
+top-heavy,43.998542077322334
+top-heavy,44.54854308225652
+top-heavy,45.04241240534557
+top-heavy,45.49193341882967
+top-heavy,45.90541461034101
+top-heavy,46.28895283316999
+top-heavy,46.64716583815127
+top-heavy,46.9836422279756
+top-heavy,47.301230947288445
+top-heavy,47.60223477586787
+top-heavy,47.88854386099832
+top-heavy,48.161730412463406
+top-heavy,48.42311744938763
+top-heavy,48.67382973914432
+top-heavy,48.91483222506351
+top-heavy,49.146959480763186
+top-heavy,49.370938609338026
+top-heavy,49.58740727471118
+top-heavy,49.79692806435906
+top-heavy,50.00000005
+top-heavy,58.94427196099916
+top-heavy,60.636591845889974
+top-heavy,61.77132387853085
+top-heavy,62.64911069467352
+top-heavy,63.37480615452844
+top-heavy,63.99854210232233
+top-heavy,64.5485431072565
+top-heavy,65.04241243034558
+top-heavy,65.49193344382967
+top-heavy,65.90541463534102
+top-heavy,66.28895285816999
+top-heavy,66.64716586315126
+top-heavy,66.9836422529756
+top-heavy,67.30123097228845
+top-heavy,67.60223480086786
+top-heavy,67.88854388599832
+top-heavy,68.1617304374634
+top-heavy,68.42311747438764
+top-heavy,68.67382976414432
+top-heavy,68.91483225006351
+top-heavy,69.14695950576319
+top-heavy,69.37093863433803
+top-heavy,69.58740729971117
+top-heavy,69.79692808935906
+top-heavy,70.000000075
+top-heavy,78.94427198599917
+top-heavy,80.63659187088997
+top-heavy,81.77132390353084
+top-heavy,82.64911071967352
+top-heavy,83.37480617952845
+top-heavy,83.99854212732232
+top-heavy,84.54854313225651
+top-heavy,85.04241245534558
+top-heavy,85.49193346882967
+top-heavy,85.90541466034101
+top-heavy,86.28895288317
+top-heavy,86.64716588815126
+top-heavy,86.98364227797559
+top-heavy,87.30123099728844
+top-heavy,87.60223482586787
+top-heavy,87.88854391099832
+top-heavy,88.1617304624634
+top-heavy,88.42311749938763
+top-heavy,88.67382978914432
+top-heavy,88.91483227506352
+top-heavy,89.14695953076318
+top-heavy,89.37093865933802
+top-heavy,89.58740732471118
+top-heavy,89.79692811435906
+top-heavy,90.0000001
+bottom-heavy,10.0
+bottom-heavy,10.000672392117927
+bottom-heavy,10.006178998568622
+bottom-heavy,10.02261570031637
+bottom-heavy,10.05678242955127
+bottom-heavy,10.115964751188432
+bottom-heavy,10.207828920435393
+bottom-heavy,10.340357797714596
+bottom-heavy,10.52180703858788
+bottom-heavy,10.760673003435478
+bottom-heavy,11.065668115474399
+bottom-heavy,11.445701273961577
+bottom-heavy,11.909861869062041
+bottom-heavy,12.467406460811786
+bottom-heavy,13.127747488434236
+bottom-heavy,13.900443565252916
+bottom-heavy,14.79519103729748
+bottom-heavy,15.82181656652903
+bottom-heavy,16.990270557189625
+bottom-heavy,18.310621284866865
+bottom-heavy,19.79304961784998
+bottom-heavy,21.447844242673536
+bottom-heavy,23.285397322648794
+bottom-heavy,25.316200531183686
+bottom-heavy,27.550841411830007
+bottom-heavy,30.000000025
+bottom-heavy,30.000672417117926
+bottom-heavy,30.00617902356862
+bottom-heavy,30.022615725316367
+bottom-heavy,30.056782454551268
+bottom-heavy,30.11596477618843
+bottom-heavy,30.20782894543539
+bottom-heavy,30.340357822714594
+bottom-heavy,30.52180706358788
+bottom-heavy,30.760673028435477
+bottom-heavy,31.065668140474397
+bottom-heavy,31.445701298961577
+bottom-heavy,31.909861894062043
+bottom-heavy,32.467406485811786
+bottom-heavy,33.12774751343424
+bottom-heavy,33.90044359025292
+bottom-heavy,34.795191062297484
+bottom-heavy,35.821816591529036
+bottom-heavy,36.99027058218962
+bottom-heavy,38.31062130986686
+bottom-heavy,39.79304964284998
+bottom-heavy,41.44784426767353
+bottom-heavy,43.2853973476488
+bottom-heavy,45.31620055618368
+bottom-heavy,47.550841436830005
+bottom-heavy,50.00000005
+bottom-heavy,50.00067244211793
+bottom-heavy,50.00617904856862
+bottom-heavy,50.02261575031637
+bottom-heavy,50.056782479551266
+bottom-heavy,50.11596480118843
+bottom-heavy,50.20782897043539
+bottom-heavy,50.34035784771459
+bottom-heavy,50.52180708858788
+bottom-heavy,50.76067305343548
+bottom-heavy,51.06566816547439
+bottom-heavy,51.44570132396158
+bottom-heavy,51.90986191906204
+bottom-heavy,52.467406510811784
+bottom-heavy,53.127747538434235
+bottom-heavy,53.90044361525292
+bottom-heavy,54.79519108729748
+bottom-heavy,55.821816616529034
+bottom-heavy,56.99027060718962
+bottom-heavy,58.310621334866866
+bottom-heavy,59.79304966784998
+bottom-heavy,61.44784429267354
+bottom-heavy,63.285397372648795
+bottom-heavy,65.31620058118368
+bottom-heavy,67.55084146183
+bottom-heavy,70.000000075
+bottom-heavy,70.00067246711794
+bottom-heavy,70.00617907356862
+bottom-heavy,70.02261577531637
+bottom-heavy,70.05678250455128
+bottom-heavy,70.11596482618843
+bottom-heavy,70.20782899543539
+bottom-heavy,70.34035787271459
+bottom-heavy,70.52180711358788
+bottom-heavy,70.76067307843549
+bottom-heavy,71.0656681904744
+bottom-heavy,71.44570134896158
+bottom-heavy,71.90986194406204
+bottom-heavy,72.46740653581178
+bottom-heavy,73.12774756343424
+bottom-heavy,73.90044364025292
+bottom-heavy,74.79519111229749
+bottom-heavy,75.82181664152903
+bottom-heavy,76.99027063218962
+bottom-heavy,78.31062135986687
+bottom-heavy,79.79304969284998
+bottom-heavy,81.44784431767353
+bottom-heavy,83.2853973976488
+bottom-heavy,85.31620060618368
+bottom-heavy,87.55084148683001
+bottom-heavy,90.0000001
+spike at the median,10.0
+spike at the median,10.800000001
+spike at the median,11.600000002
+spike at the median,12.400000003
+spike at the median,13.200000004
+spike at the median,14.000000005
+spike at the median,14.800000006000001
+spike at the median,15.600000007000002
+spike at the median,16.400000008
+spike at the median,17.200000009
+spike at the median,18.00000001
+spike at the median,18.800000011
+spike at the median,19.600000012000002
+spike at the median,20.400000013
+spike at the median,21.200000014000004
+spike at the median,22.000000015
+spike at the median,22.800000016000002
+spike at the median,23.600000017000003
+spike at the median,24.400000018
+spike at the median,25.200000019
+spike at the median,26.00000002
+spike at the median,26.800000021000002
+spike at the median,27.600000022
+spike at the median,28.400000023
+spike at the median,29.200000023999998
+spike at the median,30.000000025
+spike at the median,41.94977134339897
+spike at the median,43.35132582283419
+spike at the median,44.24619865004864
+spike at the median,44.91726461689739
+spike at the median,45.45947694055488
+spike at the median,45.91709451783713
+spike at the median,46.31455684722209
+spike at the median,46.66686789227795
+spike at the median,46.98393803483502
+spike at the median,47.27267474848742
+spike at the median,47.53809526524239
+spike at the median,47.78396498262337
+spike at the median,48.013185921005416
+spike at the median,48.228044531996126
+spike at the median,48.430376053980304
+spike at the median,48.621677132120524
+spike at the median,48.803185159400236
+spike at the median,48.975935525148984
+spike at the median,49.14080379190694
+spike at the median,49.298537342484764
+spike at the median,49.44977951432716
+spike at the median,49.59508827291828
+spike at the median,49.734950848882605
+spike at the median,49.86979534667221
+spike at the median,50.00000005
+spike at the median,50.01680982894818
+spike at the median,50.077237509107775
+spike at the median,50.18846419730308
+spike at the median,50.354890213695434
+spike at the median,50.57982378594216
+spike at the median,50.86595386614747
+spike at the median,51.21556359526641
+spike at the median,51.63064702858712
+spike at the median,52.11298059909855
+spike at the median,52.664170323685994
+spike at the median,53.28568474954904
+spike at the median,53.978878930879254
+spike at the median,54.74501246263805
+spike at the median,55.58526341120399
+spike at the median,56.50073931542153
+spike at the median,57.492486036777315
+spike at the median,58.56149499277799
+spike at the median,59.70870915020781
+spike at the median,60.93502805040377
+spike at the median,62.24131206731247
+spike at the median,63.62838604918278
+spike at the median,65.09704245910092
+spike at the median,66.64804410363445
+spike at the median,68.28212651965626
+spike at the median,70.000000075
+spike at the median,70.800000076
+spike at the median,71.60000007699999
+spike at the median,72.400000078
+spike at the median,73.200000079
+spike at the median,74.00000008
+spike at the median,74.800000081
+spike at the median,75.600000082
+spike at the median,76.40000008300001
+spike at the median,77.20000008400001
+spike at the median,78.000000085
+spike at the median,78.800000086
+spike at the median,79.600000087
+spike at the median,80.400000088
+spike at the median,81.200000089
+spike at the median,82.00000009
+spike at the median,82.800000091
+spike at the median,83.60000009199999
+spike at the median,84.400000093
+spike at the median,85.200000094
+spike at the median,86.000000095
+spike at the median,86.80000009599999
+spike at the median,87.60000009699999
+spike at the median,88.400000098
+spike at the median,89.20000009900001
+spike at the median,90.0000001

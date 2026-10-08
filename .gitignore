@@ -1,0 +1,6 @@
+.venv/
+raw/
+__pycache__/
+*.pyc
+.DS_Store
+article/plotly.min.js

@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Same Numbers, Different Stories | Dameen Analytics</title>
+<meta name="description" content="Twelve point clouds can carry identical means, standard deviations and correlations, to fifteen decimal places, and still tell twelve different stories. A working guide to what descriptive statistics hide, with reproducible datasets, interactive charts and real data.">
+<meta name="author" content="Abdelrhman Dameen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Same Numbers, Different Stories">
+<meta property="og:description" content="Why a mean, a standard deviation and a correlation can all be true and still mislead, with twelve datasets that prove it to fifteen decimal places.">
+<meta property="og:image" content="same-numbers-different-stories-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.plot.ly/plotly-4.1.1.min.js" charset="utf-8"></script>
+<script>window.Plotly || document.write('<script src="plotly.min.js" charset="utf-8"><\/script>');</script>
+
+<style>
+:root{
+  --primary:#8A2BE2; --primary-dark:#5D3FD3; --primary-light:#C39BD3;
+  --bg:#faf5ff; --white:#ffffff; --ink:#1f2937; --muted:#4b5563; --soft:#6b7280;
+  --border:#e9d8f5; --coral:#FF6B6B; --teal:#00B894; --amber:#FFB400; --blue:#2D98DA;
+  --radius:14px; --radius-sm:8px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:0 4px 6px -1px rgba(0,0,0,.10),0 2px 4px -1px rgba(0,0,0,.06);
+  --shadow-lg:0 18px 40px -12px rgba(93,63,211,.28);
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{
+  font-family:var(--font); color:var(--muted); line-height:1.75; background:var(--white);
+  background-image:url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-1 1h2v2H-1zM9 1h2v2H9zM-1 9h2v2H-1zM9 9h2v2H9z' fill='%23C39BD3' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,#8A2BE2,#C39BD3,#FF6B6B);z-index:2000;transition:width .1s linear}
+header.site{position:sticky;top:0;z-index:1500;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+header.site .bar{max-width:1180px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#8A2BE2,#5D3FD3);color:#fff;display:grid;place-items:center;font-weight:800;letter-spacing:.5px;font-size:1.05rem;box-shadow:var(--shadow-sm)}
+.brand span{font-weight:700;color:var(--ink);font-size:1.02rem}
+header.site nav a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;margin-left:20px}
+header.site nav a:hover{color:var(--primary)}
+header.site nav a.cta{background:var(--primary);color:#fff;padding:8px 16px;border-radius:999px;font-weight:600}
+header.site nav a.cta:hover{background:var(--primary-dark)}
+main{max-width:1180px;margin:0 auto;padding:0 22px 90px}
+.wrap{max-width:760px;margin:0 auto}
+.wide{max-width:1100px;margin:0 auto}
+
+/* hero */
+.hero{padding:64px 0 34px;border-bottom:1px solid var(--border);margin-bottom:44px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);background:var(--bg);border:1px solid var(--border);padding:7px 14px;border-radius:999px}
+h1{font-size:clamp(2.1rem,5.2vw,3.5rem);line-height:1.1;color:var(--ink);font-weight:800;margin:22px 0 16px;letter-spacing:-.02em}
+.standfirst{font-size:clamp(1.06rem,2.1vw,1.28rem);color:var(--muted);max-width:820px}
+.byline{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin-top:26px;font-size:.9rem;color:var(--soft)}
+.byline b{color:var(--ink);font-weight:600}
+.byline .dot{width:5px;height:5px;border-radius:50%;background:var(--primary-light)}
+.jump{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.jump a{font-size:.83rem;font-weight:600;color:var(--primary-dark);background:var(--bg);border:1px solid var(--border);padding:7px 13px;border-radius:999px;text-decoration:none}
+.jump a:hover{background:#fff;box-shadow:var(--shadow-sm)}
+
+/* typography */
+h2{font-size:clamp(1.5rem,3.2vw,2.05rem);color:var(--ink);font-weight:700;line-height:1.22;margin:0 0 8px;letter-spacing:-.01em}
+h3{font-size:1.18rem;color:var(--ink);font-weight:700;margin:34px 0 8px}
+h4{font-size:1rem;color:var(--ink);font-weight:700;margin:22px 0 6px}
+section{padding:44px 0;border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:none}
+.secnum{font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--primary-light);margin-bottom:10px}
+p{margin:0 0 1.05em}
+a{color:var(--primary);text-decoration:none;border-bottom:1px solid rgba(138,43,226,.28)}
+a:hover{color:var(--primary-dark);border-bottom-color:var(--primary-dark)}
+strong{color:var(--ink);font-weight:600}
+em{font-style:italic}
+ul,ol{margin:0 0 1.1em 1.15em}
+li{margin-bottom:.5em}
+li::marker{color:var(--primary-light);font-weight:700}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86em;background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:1px 6px;color:var(--primary-dark)}
+pre{background:#1b1233;color:#efe9ff;border-radius:var(--radius);padding:20px 22px;overflow-x:auto;margin:0 0 1.2em;font-size:.84rem;line-height:1.65;box-shadow:var(--shadow-md)}
+pre code{background:none;border:none;padding:0;color:inherit;font-size:1em}
+blockquote{margin:0 0 1.2em;padding:20px 24px;background:var(--bg);border-left:4px solid var(--primary);border-radius:0 var(--radius-sm) var(--radius-sm) 0;color:var(--ink);font-size:1.05rem;font-style:italic}
+blockquote cite{display:block;margin-top:10px;font-size:.85rem;font-style:normal;color:var(--soft)}
+hr.sep{border:none;height:1px;background:var(--border);margin:36px 0}
+
+/* cards & callouts */
+.callout{border-radius:var(--radius);padding:22px 24px;margin:26px 0;border:1px solid var(--border);background:var(--white);box-shadow:var(--shadow-sm)}
+.callout .label{display:flex;align-items:center;gap:9px;font-size:.76rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}
+.callout p:last-child{margin-bottom:0}
+.callout.key{background:linear-gradient(180deg,#fbf7ff,#ffffff);border-left:5px solid var(--primary)}
+.callout.key .label{color:var(--primary)}
+.callout.trap{background:linear-gradient(180deg,#fff7f7,#ffffff);border-left:5px solid var(--coral)}
+.callout.trap .label{color:#d64545}
+.callout.method{background:linear-gradient(180deg,#f4fbf9,#ffffff);border-left:5px solid var(--teal)}
+.callout.method .label{color:#0d8b70}
+.callout.real{background:linear-gradient(180deg,#f5faff,#ffffff);border-left:5px solid var(--blue)}
+.callout.real .label{color:#1c78b3}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:22px 0}
+.mini{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow-sm)}
+.mini h4{margin-top:0}
+.mini p:last-child{margin-bottom:0}
+
+/* figures + tables */
+.figcard{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:14px 14px 4px;margin:30px 0 34px}
+.figcard .plotly-graph-div{width:100%!important}
+figcaption{font-size:.87rem;color:var(--soft);padding:12px 8px 14px;border-top:1px dashed var(--border);margin-top:6px}
+figcaption b{color:var(--ink);font-weight:600}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);margin:24px 0 8px;background:var(--white);box-shadow:var(--shadow-sm)}
+table{border-collapse:collapse;width:100%;font-size:.85rem;font-variant-numeric:tabular-nums}
+th{background:linear-gradient(180deg,#f7f1ff,#f2e9fd);color:var(--primary-dark);text-align:left;padding:11px 14px;font-weight:700;font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid #f4eefb;color:var(--muted);white-space:nowrap}
+tbody tr:hover{background:#fdfaff}
+tr.hl td{background:#f6f0ff;color:var(--ink);font-weight:700}
+.tcap{font-size:.82rem;color:var(--soft);margin:0 0 26px;padding-left:2px;max-width:900px}
+
+/* misc */
+.statsrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:26px 0}
+.stat{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;text-align:center;box-shadow:var(--shadow-sm)}
+.stat .v{font-size:1.45rem;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums}
+.stat .k{font-size:.76rem;text-transform:uppercase;letter-spacing:.09em;color:var(--soft);font-weight:600;margin-top:4px}
+.checklist{counter-reset:c;list-style:none;margin-left:0}
+.checklist li{counter-increment:c;position:relative;padding-left:46px;margin-bottom:14px}
+.checklist li::before{content:counter(c);position:absolute;left:0;top:1px;width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#8A2BE2,#5D3FD3);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.85rem}
+.refs{list-style:none;margin-left:0;font-size:.9rem}
+.refs li{padding-left:0;margin-bottom:14px;color:var(--muted);border-bottom:1px dashed var(--border);padding-bottom:14px}
+.refs li:last-child{border-bottom:none}
+.refs b{color:var(--ink)}
+footer.site{background:linear-gradient(150deg,#1b1233,#2c1a5c);color:#ded5ff;padding:56px 22px 40px;margin-top:20px}
+footer.site .inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+footer.site h4{color:#fff;margin-top:0}
+footer.site a{color:#cbb6ff;border-bottom:1px solid rgba(203,182,255,.35)}
+footer.site a:hover{color:#fff}
+footer.site .fine{max-width:1180px;margin:34px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);font-size:.82rem;color:#a693d6}
+@media(max-width:760px){
+  header.site nav{display:none}
+  .hero{padding:40px 0 26px}
+  main{padding:0 16px 70px}
+  pre{font-size:.78rem;padding:16px}
+  .figcard{padding:10px 6px 2px;margin:24px 0}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="index.html"><span class="mark">DA</span><span>Dameen Analytics</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#reports">Reports</a>
+      <a href="index.html#story-by-graphs">Story by Graph</a>
+      <a href="#repo" class="cta">The data</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><i class="fas fa-chart-scatter"></i>&nbsp;Data stories</span>
+    <h1>Same Numbers, Different Stories</h1>
+    <p class="standfirst">
+      Twelve point clouds that carry identical means, identical standard deviations and an identical
+      correlation to fifteen decimal places. One of them is a heart. One is the initials DA. One is the
+      dinosaur everybody quotes. The statistics never notice.
+    </p>
+    <div class="byline">
+      <span><b>Abdelrhman Dameen</b></span><span class="dot"></span>
+      <span>Dameen Analytics</span><span class="dot"></span>
+      <span>October 2026</span><span class="dot"></span>
+      <span><i class="far fa-clock"></i> 20 minute read</span><span class="dot"></span>
+      <span>Interactive charts: hover any point</span>
+    </div>
+    <div class="jump">
+      <a href="#claim">The claim</a>
+      <a href="#anscombe">Anscombe, 1973</a>
+      <a href="#dozen">The exact dozen</a>
+      <a href="#mean-sd">Mean and SD</a>
+      <a href="#boxplot">The boxplot mirage</a>
+      <a href="#correlation">Correlation</a>
+      <a href="#simpson">Simpson's paradox</a>
+      <a href="#protocol">The protocol</a>
+      <a href="#repo">Reproduce it</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 1. THE CLAIM ===================== -->
+<section id="claim">
+  <div class="wrap">
+    <p class="secnum">01 &nbsp;·&nbsp; The claim</p>
+    <h2>A mean is a compression. Compressions lose things.</h2>
+
+    <p>
+      Every summary statistic is a trade. You give up detail and you buy a number you can compare,
+      email and put on a slide. The trade is almost always worth making. The problem is that we
+      rarely ask what we paid for it.
+    </p>
+    <p>
+      In 1973 the statistician Frank Anscombe published four small datasets to make exactly this point.
+      They were built so that the mean of x, the mean of y, the standard deviation of x, the standard
+      deviation of y, the correlation, and therefore the fitted regression line, come out the same to
+      two decimal places. He then drew them. The four pictures look nothing like each other.
+    </p>
+
+    <blockquote>
+      &ldquo;Most textbooks that deal with fitting straight lines to data (...) present the fitting
+      process as a purely computational one. (...) Having made the calculations, one should make both
+      calculations and graphs. Both sorts of output should be studied; each will contribute to
+      understanding.&rdquo;
+      <cite>F. J. Anscombe, <em>Graphs in Statistical Analysis</em>, The American Statistician, 1973</cite>
+    </blockquote>
+
+    <p>
+      Half a century on, the lesson is easy to agree with and hard to practise, because the tools that
+      made it possible are working against us. A warehouse query returns a mean. A BI dashboard renders
+      a bar. A model reports an R squared. Each of those is a summary, and each of them will happily
+      describe twelve completely different datasets with the same sentence.
+    </p>
+    <p>
+      What follows is seven demonstrations, and then a protocol. I built the datasets myself, wrote the
+      code, and put everything in a public repository so you can check every number. Two of the
+      demonstrations use real published data, the 1973 Berkeley admissions records and a global health
+      dataset, because the argument only matters if it survives contact with real mess.
+    </p>
+
+    <div class="callout key">
+      <div class="label"><i class="fas fa-bullseye"></i> What this article argues</div>
+      <p>
+        Descriptive statistics are a starting point that feels like a conclusion. If your exploratory
+        analysis stops at the mean, the standard deviation and the correlation, you have not found the
+        story, you have found the shape of the envelope. The job is to open it.
+      </p>
+    </div>
+
+    <div class="statsrow">
+      <div class="stat"><div class="v">12</div><div class="k">identical datasets</div></div>
+      <div class="stat"><div class="v">1.1e&minus;14</div><div class="k">largest disagreement</div></div>
+      <div class="stat"><div class="v">7</div><div class="k">demonstrations</div></div>
+      <div class="stat"><div class="v">11</div><div class="k">shareable datasets</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2. ANSCOMBE ===================== -->
+<section id="anscombe">
+  <div class="wide">
+    <div class="wrap">
+      <p class="secnum">02 &nbsp;·&nbsp; Demonstration one</p>
+      <h2>Anscombe's quartet: four regressions, one output</h2>
+      <p>
+        Here are Anscombe's four datasets. Read the table first, the way an analyst with a query and a
+        deadline would read it.
+      </p>
+    </div>
+    <!--TABLE:anscombe_2dp-->
+    <div class="wrap">
+      <p>
+        Identical. By every number on the page, this is one dataset reported four times. Now draw it,
+        with the same fitted line on each panel.
+      </p>
+    </div>
+  </div>
+  <div class="wide">
+    <figure class="figcard">
+      <!--FIG:anscombe-->
+      <figcaption>
+        <b>Figure 1.</b> Anscombe's quartet, interactive. Each panel carries the same mean of x (9.00),
+        mean of y (7.50), standard deviation of x (3.16), standard deviation of y (1.94), correlation
+        (0.82) and the same dashed least squares line. Hover any point to read its coordinates. The
+        four panels are <em>not</em> the same dataset, and it takes about two seconds to see it.
+      </figcaption>
+    </figure>
+  </div>
+  <div class="wrap">
+    <h3>What each panel is telling you</h3>
+    <p>
+      <strong>Dataset 1</strong> is the case the regression was invented for. The relationship is
+      straight, the scatter is even, and the line is a fair description of every point on the panel. If
+      all four looked like this, summary statistics would be enough.
+    </p>
+    <p>
+      <strong>Dataset 2</strong> is curved. The points sit on a clean parabola that a straight line can
+      only approximate, so the correlation of 0.82 actually understates a relationship that is nearly
+      deterministic. Add one x squared term and the fit becomes almost exact. Report only the linear
+      correlation and you have just described a strong relationship as a moderate one, and you will
+      probably conclude there is noise in a process that has none.
+    </p>
+    <p>
+      <strong>Dataset 3</strong> is a perfect straight line with a single point pulled out of place. The
+      10 honest points have a correlation of 1.00. One row drags the reported correlation down to 0.82
+      and tilts the slope. In a real dataset that row is a data entry error, a different unit of
+      measurement, or a genuinely extreme case. Two of those three need fixing, and the summary
+      statistics cannot tell you which one you have.
+    </p>
+    <p>
+      <strong>Dataset 4</strong> is the trap for anyone who fits before they look. Every x is 8, except
+      for one observation at x = 19. That single point both creates the entire apparent trend and
+      carries a leverage of 1.0, which means the fitted line passes through it exactly. Remove it and
+      the regression is not merely weaker, it is undefined, because x has no variance left. A leverage
+      of 1.0 should be impossible in a dataset you are reporting from. It happens all the time.
+    </p>
+
+    <div class="callout trap">
+      <div class="label"><i class="fas fa-triangle-exclamation"></i> The part that should worry you</div>
+      <p>
+        If you ran the four regressions in any statistical package, printed the coefficients, the
+        R squared, the standard errors and the p values, and put the printouts on a desk, you would not
+        be able to match the printouts to the pictures. Four different realities, one identical block of
+        output. Anscombe chose the numbers so that the residual standard error, the confidence interval
+        for the slope and the significance test agree as well.
+      </p>
+    </div>
+
+    <h3>The equality is a property of rounding, and that matters</h3>
+    <p>
+      It is worth being precise about the word &ldquo;identical&rdquo;, because statisticians have spent
+      fifty years arguing about it. The four datasets are not arithmetically identical. They agree to
+      two decimal places, which is the precision Anscombe chose for his table.
+    </p>
+  </div>
+  <!--TABLE:anscombe_4dp-->
+  <div class="wrap">
+    <p>
+      The standard deviation of y is 1.9370, 1.9371, 1.9359 and 1.9361. The correlations are 0.8164,
+      0.8162, 0.8163 and 0.8165. Real differences, hiding two decimal places down.
+    </p>
+    <p>
+      This is why the next two sections are worth your time. Rounding is a weak form of the trick. If I
+      could build datasets whose statistics are identical to the last binary digit, the objection
+      disappears, and the argument gets sharper: there is no threshold of precision at which the
+      summary statistics start to notice the shape. They never notice. That is what a summary is.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== 3. DATASAURUS ===================== -->
+<section id="dozen">
+  <div class="wide">
+    <div class="wrap">
+      <p class="secnum">03 &nbsp;·&nbsp; Demonstration two</p>
+      <h2>The Datasaurus Dozen, and the method behind it</h2>
+      <p>
+        In 2016 Alberto Cairo published a dataset whose statistics look thoroughly ordinary and whose
+        scatter plot is a dinosaur. His instruction to readers has become the slogan of this whole
+        corner of data visualisation: <em>never trust summary statistics alone; always visualise your
+        data</em>.
+      </p>
+      <p>
+        A year later, Justin Matejka and George Fitzmaurice at Autodesk Research generalised the idea
+        into a method and published it at CHI 2017 as <em>Same Stats, Different Graphs</em>. Their
+        contribution is not the dinosaur. It is the algorithm: start from any dataset, pick a point,
+        nudge it, keep the nudge if the mean, the standard deviation and the correlation stay inside
+        tolerance, and bias the nudges towards a target shape so the cloud walks towards a picture you
+        chose. They add simulated annealing so the walk does not get stuck in local optima, and they
+        run it until a blob of random numbers has become a circle, a star, an x, three vertical lines.
+      </p>
+    </div>
+    <figure class="figcard">
+      <!--FIG:datasaurus-->
+      <figcaption>
+        <b>Figure 2.</b> The Datasaurus Dozen, thirteen datasets redistributed here from the published
+        data accompanying Matejka and Fitzmaurice (2017). Every panel has x mean 54.26, y mean 47.83,
+        x standard deviation 16.76, y standard deviation 26.93 and a Pearson correlation of
+        &minus;0.06, to two decimal places.
+      </figcaption>
+    </figure>
+    <div class="wrap">
+      <p>
+        Thirteen panels, thirteen datasets, one summary. The paper's datasets agree to two decimal
+        places, which is plenty to make the argument in a keynote. I wanted to know whether the
+        agreement could be exact rather than close. It can, and it takes four lines of linear algebra
+        rather than two hundred thousand iterations of simulated annealing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4. THE EXACT DOZEN ===================== -->
+<section id="exact">
+  <div class="wide">
+    <div class="wrap">
+      <p class="secnum">04 &nbsp;·&nbsp; Demonstration three</p>
+      <h2>Twelve datasets, statistics identical to fifteen decimal places</h2>
+      <p>
+        Here is the whole trick. Take any cloud of points. Standardise both coordinates so they have
+        mean zero and standard deviation one. The correlation of two standardised variables is the
+        cosine of the angle between them, so if you want a specific correlation, you do not need to
+        search for one: you rotate.
+      </p>
+    </div>
+    <div class="wide">
+      <div class="callout method">
+        <div class="label"><i class="fas fa-square-root-variable"></i> The construction</div>
+        <pre><code>u = (x - mean(x)) / sd(x)            # mean 0, sd 1
+v = (y - mean(y)) / sd(y)            # mean 0, sd 1
+e = v - (u . v / n) * u              # the part of v perpendicular to u
+w = e / sd(e)                        # unit vector, still perpendicular to u
+
+v* = r * u + sqrt(1 - r^2) * w       # corr(u, v*) is now exactly r
+x' = m1 + s1 * u                     # mean m1, sd s1, exactly
+y' = m2 + s2 * v*                    # mean m2, sd s2, exactly</code></pre>
+        <p>
+          The affine step fixes the means and the standard deviations because it is arithmetic rather
+          than optimisation. The orthogonal step fixes the correlation because a correlation is a
+          cosine and the two components are at right angles. Nothing in this procedure looks at the
+          shape of the cloud, which is why the shape is free to be anything at all.
+        </p>
+      </div>
+    </div>
+    <figure class="figcard">
+      <!--FIG:own_dozen-->
+      <figcaption>
+        <b>Figure 3.</b> Twelve datasets of 142 points each, built from the shapes above and then
+        transformed so that every one carries <em>exactly</em> the same five statistics: mean of x
+        54.26, mean of y 47.83, standard deviation of x 16.76, standard deviation of y 26.93,
+        correlation &minus;0.0641. The circle is slightly elliptical and the grid is slightly sheared,
+        and that is the visible price of forcing a correlation of &minus;0.06 onto a shape that does
+        not have one. The statistics are perfect; the picture pays for it.
+      </figcaption>
+    </figure>
+    <div class="wrap">
+      <p>
+        The table below is the verification. Twelve rows, ten decimal places, no argument.
+      </p>
+    </div>
+  </div>
+  <!--TABLE:own_dozen-->
+  <div class="wrap">
+    <p>
+      The largest disagreement between any two of those rows, across all five statistics, is
+      1.1 &times; 10<sup>&minus;14</sup>. That is floating point arithmetic running out of room, not a
+      statistical difference. You could train a model on any one of these twelve datasets and print a
+      metric, and the metric would be the same to every digit the machine can hold, while the thing you
+      are modelling is a spiral in one case and a heart in another.
+    </p>
+
+    <div class="callout key">
+      <div class="label"><i class="fas fa-lightbulb"></i> The uncomfortable reading</div>
+      <p>
+        Notice what the trick does <em>not</em> preserve. Skewness, kurtosis, the number of modes and
+        every nonlinear statistic are free to differ, and they do, wildly. So the summary is not
+        merely incomplete in an abstract sense. It is incomplete in a way that is structural: the
+        statistics that survive the transformation are exactly the ones that cannot see shape, and the
+        statistics that see shape are exactly the ones nobody puts in the table.
+      </p>
+    </div>
+
+    <p>
+      Three honest caveats, because this is a demonstration, not a proof of anything universal.
+      These twelve datasets are synthetic and they were built to make a point, so treat the shapes as
+      an illustration of the arithmetic rather than as evidence about anyone's data. Higher moments are
+      not preserved, which is the whole idea. And the transformation is not a substitute for the
+      Autodesk method: their perturbation approach generalises to any statistic you can compute, while
+      mine works because the mean, the standard deviation and the correlation are exactly the
+      statistics an affine-plus-rotation map can control. That is also why they are the statistics that
+      get quoted.
+    </p>
+    <p>
+      Everything from here on uses either real data or datasets whose distributions are constructed to
+      mirror shapes you meet in operational work.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== 5. MEAN AND SD ===================== -->
+<section id="mean-sd">
+  <div class="wide">
+    <div class="wrap">
+      <p class="secnum">05 &nbsp;·&nbsp; Demonstration four</p>
+      <h2>The mean and the standard deviation do not describe a shape</h2>
+      <p>
+        Set the shape question aside for a moment and keep only two numbers, the pair that ends up in
+        almost every report ever written. Six distributions below all have a mean of 50.00 and a
+        standard deviation of 10.00, exactly, by construction.
+      </p>
+    </div>
+    <figure class="figcard">
+      <!--FIG:mean_sd-->
+      <figcaption>
+        <b>Figure 4.</b> Six distributions. Mean 50.00 and standard deviation 10.00 for all six, to the
+        last digit. The dashed black line is 50, the solid coral line is each dataset's median. Hover
+        the bars to read the counts.
+      </figcaption>
+    </figure>
+    <!--TABLE:mean_sd-->
+    <div class="wrap">
+      <p>
+        Same two headline numbers, and the story underneath is different in every panel.
+      </p>
+      <p>
+        The <strong>bimodal</strong> pair of humps is the clearest case. The mean of 50 sits in a gap
+        where almost no observation lives. That is not a subtle statistical objection, it is a direct
+        contradiction: the number you are reporting describes an outcome that does not happen. Two
+        humps almost always means two populations, two shifts, two products, two customer segments, and
+        the right next step is to find the variable that separates them rather than to report their
+        average.
+      </p>
+      <p>
+        The <strong>skewed</strong> panels show why the mean drifts away from anything a person would
+        recognise as typical. In the right skewed case the median sits at 47.71 while the mean is at 50,
+        because a modest number of large values pull the mean up. In real operational data, service
+        times, claim amounts, waiting lists and call durations are skewed in this direction, and the
+        mean is routinely read as &ldquo;the typical case&rdquo; when it is nothing of the sort.
+      </p>
+      <p>
+        The last panel is the one I would put in front of any analyst who reports a standard deviation
+        without a plot. Four rows out of four hundred sit far out on the tails. Those four rows alone
+        manufacture the entire standard deviation of 10.00. Remove them and the interquartile range
+        collapses to 5.73 against 13.50 for the normal case with the same standard deviation. The
+        headline number is not describing the spread of your data. It is describing four records.
+      </p>
+
+      <div class="callout trap">
+        <div class="label"><i class="fas fa-triangle-exclamation"></i> The rule of thumb worth memorising</div>
+        <p>
+          The mean and the standard deviation are a complete description of one distribution, the
+          normal one, and a partial description of every other. They are least trustworthy exactly
+          where real business data lives: skewed, bounded, spiky, contaminated, or quietly bimodal.
+          Report the median and the interquartile range with them, report n, and report the minimum and
+          the maximum. Then show the histogram, because a reader can absorb a shape in a second and a
+          standard deviation never.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6. BOXPLOT MIRAGE ===================== -->
+<section id="boxplot">
+  <div class="wide">
+    <div class="wrap">
+      <p class="secnum">06 &nbsp;·&nbsp; Demonstration five</p>
+      <h2>The boxplot mirage</h2>
+      <p>
+        The usual fix for a misleading mean is a boxplot, and it is a real improvement: five numbers
+        instead of two, resistant to outliers, and instantly comparable across groups. It also runs
+        into the same wall, one step further along. Six datasets below share a single five-number
+        summary.
+      </p>
+    </div>
+    <figure class="figcard">
+      <!--FIG:boxplot_mirage-->
+      <figcaption>
+        <b>Figure 5.</b> Six datasets, top row jittered so you can see every individual point, bottom
+        row drawn as the boxplots you would actually put in the report. Minimum 10, first quartile 30,
+        median 50, third quartile 70, maximum 90 for all six. Hover the dots in the top row to see how
+        the mass is arranged.
+      </figcaption>
+    </figure>
+    <!--TABLE:same_boxplot-->
+    <div class="wrap">
+      <p>
+        The five-number summary is identical by construction, and the mean still wanders from 44.82 to
+        55.83 while the standard deviation moves from 19.11 to 27.06. One dataset is a uniform spread.
+        One crowds towards the middle. One is hollow, with the mass pushed into the tails. One is top
+        heavy, one bottom heavy, one is a spike at the median with thin tails on either side.
+      </p>
+      <p>
+        If you have ever presented a wall of boxplots over a time series, this is the failure mode to
+        worry about. The dashed box does not move, so nothing in the report moves, while the thing you
+        are actually tracking has changed from a bell into a U. The Autodesk authors demonstrate the
+        same effect over time, seven distributions that shift shape year after year while their
+        boxplots stay frozen, and use it to argue for strip plots and violin plots that show density
+        rather than quartiles.
+      </p>
+
+      <h3>Why this is an operations problem, not a statistical one</h3>
+      <p>
+        Consider a service desk whose response times become bimodal because a new team is handling a
+        new ticket type. The median gets faster and the interquartile range gets narrower, both of
+        which look like improvement on a boxplot, while an entire second population of slow jobs grows
+        into the tail. The people experiencing that second population are the ones most likely to leave,
+        and their experience is invisible in exactly the chart most teams use to monitor experience.
+      </p>
+      <p>
+        Tukey designed the boxplot to compare medians and flag outliers, and it does that job well. It
+        was never a density plot. If the shape of the distribution is what your decision depends on,
+        draw something that shows shape.
+      </p>
+
+      <div class="callout method">
+        <div class="label"><i class="fas fa-wrench"></i> Two habits that cost nothing</div>
+        <p>
+          Overlay the individual points on the boxplot whenever the number of observations is small
+          enough for dots to be readable, which in most reporting situations it is. And plot the
+          distribution of the same metric at two points in time side by side, not just its median,
+          because the question &ldquo;did the centre move&rdquo; and the question &ldquo;did the shape
+          move&rdquo; are different questions with different answers.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 7. CORRELATION ===================== -->
+<section id="correlation">
+  <div class="wide">
+    <div class="wrap">
+      <p class="secnum">07 &nbsp;·&nbsp; Demonstration six</p>
+      <h2>Correlation is a number about a line, not about a relationship</h2>
+      <p>
+        Five datasets below all have a Pearson correlation of 0.7000, exactly. They are not five
+        variations on the same theme. They are a line, a curve, a step, a single-point accident, and a
+        mostly random cloud with a late flourish.
+      </p>
+    </div>
+    <figure class="figcard">
+      <!--FIG:same_r-->
+      <figcaption>
+        <b>Figure 6.</b> Five datasets, one correlation. Pearson r is 0.7000 in every panel. The dashed
+        line is the least squares fit. Spearman's rho, which only looks at rank order, already separates
+        them, and so does a single omitted point in the fourth panel.
+      </figcaption>
+    </figure>
+    <!--TABLE:same_r-->
+    <div class="wrap">
+      <p>
+        The second panel is the most common real-world case: a genuine relationship that happens to be
+        curved. Correlations are a summary of the linear component of a relationship and nothing else,
+        so a strong curve is reported as a moderate line. If you fit a straight line through it and
+        then reason about the residuals as noise, you are treating structure as error, and your
+        confidence intervals will be wrong in a way that no amount of extra data will fix.
+      </p>
+      <p>
+        The third panel is the one that catches experienced people, because both variables are
+        genuinely related, up to a threshold, and then the relationship changes. Correlation has no
+        way to represent a change in regime, so it averages two regimes into one number that describes
+        neither.
+      </p>
+      <p>
+        The fourth panel is the influence problem in its purest form. Remove the single most
+        consequential point and the correlation moves by 0.285. That is a dataset where the headline
+        number is being held up by one row, and where any conclusion about the population is really a
+        conclusion about one observation.
+      </p>
+
+      <h3>The extreme case: a perfect relationship with a correlation of zero</h3>
+      <p>
+        If all of that still feels like a matter of degree, here is the limiting case. Take every point
+        on a circle. The relationship between x and y is perfect and deterministic: give me x and I can
+        tell you y, up to a sign. The correlation is zero.
+      </p>
+    </div>
+    <figure class="figcard">
+      <!--FIG:circle-->
+      <figcaption>
+        <b>Figure 7.</b> A perfect relationship, a flat regression line and a correlation of 0.00. Any
+        analysis that screened this variable pair on correlation and discarded it as unrelated would
+        have thrown away a deterministic law of motion. Hover to trace the circle.
+      </figcaption>
+    </figure>
+    <div class="wrap">
+      <p>
+        The circle is a cartoon, but the family it belongs to is not. A U-shaped relationship, an X, a
+        sine wave, a heteroscedastic fan where the correlation holds in the middle and fails at the
+        edges, and any cloud with two clusters at opposite corners all produce correlations near zero
+        while containing strong structure. A low correlation is evidence about linear association. It
+        is not evidence of independence, and it is not evidence that nothing is there.
+      </p>
+
+      <h3>The pooled correlation that measures the wrong thing</h3>
+      <p>
+        Here is the same problem in real data, and it is the reason I put the penguins in.
+      </p>
+    </div>
+    <figure class="figcard">
+      <!--FIG:penguins-->
+      <figcaption>
+        <b>Figure 8.</b> Body mass against flipper length for 342 penguins at Palmer Station,
+        Antarctica, three species, real and slightly messy data. The dashed line is every species
+        pooled. The solid lines are within each species.
+      </figcaption>
+    </figure>
+    <!--TABLE:penguins-->
+    <div class="wrap">
+      <p>
+        Pooled, the correlation is 0.871, close to the kind of number somebody quotes as a strong
+        relationship. Inside each species it falls to 0.468, 0.642 and 0.703. The pooled figure is
+        mostly a measurement of how different a Gentoo is from an Adelie, dressed up as a measurement
+        of how flipper length relates to mass. Both statements are true, and only one of them is
+        useful for the question a biologist is usually asking.
+      </p>
+
+      <div class="callout key">
+        <div class="label"><i class="fas fa-lightbulb"></i> What to report instead of a bare correlation</div>
+        <p>
+          The correlation, n, and the scatter plot. A rank correlation alongside it, because Spearman
+          survives curvature and outliers in ways Pearson does not. The influence of the most
+          consequential few points. And the correlation computed separately within each group you know
+          about, because that last number is the one that usually changes the decision.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 8. SIMPSON ===================== -->
+<section id="simpson">
+  <div class="wide">
+    <div class="wrap">
+      <p class="secnum">08 &nbsp;·&nbsp; Demonstration seven</p>
+      <h2>Simpson's paradox: the number reverses when you remember the groups</h2>
+      <p>
+        Every example so far has been about a statistic failing to describe a single population well.
+        This one is worse, because the statistic reverses. It is not vague, it is wrong in the
+        direction of the conclusion.
+      </p>
+      <p>
+        In 1973 the University of California at Berkeley was accused of discriminating against women in
+        graduate admissions, on the basis of exactly the kind of aggregate number a report would
+        contain. Peter Bickel, Eugene Hammel and John O'Connell reanalysed the applications, department
+        by department, and published what they found in <em>Science</em> in 1975. Their table, for the
+        six largest departments, is reproduced here.
+      </p>
+    </div>
+    <!--TABLE:berkeley-->
+    <div class="wide">
+      <figure class="figcard">
+        <!--FIG:berkeley-->
+        <figcaption>
+          <b>Figure 9.</b> Berkeley graduate admissions, 1973, the six largest departments. On the left,
+          the headline the aggregate produced. On the right, the same admissions split by department,
+          where the women's admission rate is the higher one in four cases. Hover any bar for the exact
+          rate.
+        </figcaption>
+      </figure>
+    </div>
+    <div class="wrap">
+      <p>
+        Overall, 44.5 per cent of the men who applied were admitted against 30.3 per cent of the women.
+        Inside the departments, women were admitted at a higher rate in four of the six. Both of those
+        sentences are arithmetic facts about the same 4,526 applications.
+      </p>
+      <p>
+        The mechanism is the reason this is not a curiosity. Women applied in far greater numbers to the
+        departments that admit almost nobody, and men applied in greater numbers to the departments that
+        admit most applicants. When the two groups have different sizes <em>and</em> the groups have
+        different admission rates, pooling them creates a mixture, and a mixture can run in the opposite
+        direction to every one of its parts. The aggregate was not just imprecise. It pointed at the
+        wrong culprit, and the correction required knowing which groups existed.
+      </p>
+    </div>
+
+    <div class="wrap">
+      <h3>The same reversal in a dataset you would meet on a Tuesday</h3>
+      <p>
+        Berkeley is history, so here is a synthetic version of the ordinary case: three schools, hours
+        of revision against exam score. Within each school more revision means a better score. Pool all
+        the students and the correlation flips negative.
+      </p>
+    </div>
+    <figure class="figcard">
+      <!--FIG:schools-->
+      <figcaption>
+        <b>Figure 10.</b> Three schools, synthetic but built to mirror a real pattern. Within each
+        school the relationship between revision and score is strongly positive. Pooled, the same data
+        reports a negative relationship, because the school that sets the most homework is also the
+        school with the weakest intake.
+      </figcaption>
+    </figure>
+    <div class="wrap">
+      <p>
+        The pooled correlation is 0.636 and it points the wrong way; within schools it runs between
+        0.898 and 0.969. Nobody is confused about which number matters once they see the picture, and
+        nobody would have seen it from the pooled output.
+      </p>
+      <p>
+        Real data does the same thing without being constructed for the purpose. Log GDP per person and
+        life expectancy correlate at 0.81 across 142 countries. Inside Africa the same two variables
+        correlate at 0.45. The pooled number is a statement about the difference between continents,
+        not about the relationship between money and years inside a continent. Both are interesting.
+        Mixing them up is how a report ends up saying something nobody can act on.
+      </p>
+    </div>
+    <figure class="figcard">
+      <!--FIG:gapminder-->
+      <figcaption>
+        <b>Figure 11.</b> Real data from Gapminder, 142 countries in 2007. Each bubble is a country,
+        sized by population. The dashed line pools every country; the five solid lines are fitted
+        inside each continent. Hover any bubble for the country name, its GDP per person and its life
+        expectancy.
+      </figcaption>
+    </figure>
+    <!--TABLE:gapminder-->
+    <div class="wrap">
+      <div class="callout real">
+        <div class="label"><i class="fas fa-hospital"></i> Where this bites in health and public sector data</div>
+        <p>
+          Compare two hospitals on readmission rates without adjusting for case mix and the hospital
+          that treats the sickest patients looks the worst. Compare two service centres on average
+          handling time without separating case types and the centre with harder work looks
+          inefficient. Report a single unemployment rate while the composition of the labour force
+          changes and the aggregate can rise while every group's rate falls. In each case the pooled
+          number is arithmetically correct, easy to compute, and the wrong number for the decision in
+          front of you.
+        </p>
+      </div>
+
+      <h3>How to catch it before someone else does</h3>
+      <p>
+        Ask what decides which group an observation lands in. If that thing also plausibly affects the
+        outcome, you have a candidate for a reversal, and the groups are almost certainly unequal in
+        size. Then plot the groups, always, even when the pooled chart looks convincing, and compute the
+        statistic both pooled and within. When they disagree, the within-group number answers the
+        causal question and the pooled number answers a question about composition. Say which one you
+        are reporting, in the chart title if necessary.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 9. PROTOCOL ===================== -->
+<section id="protocol">
+  <div class="wrap">
+    <p class="secnum">09 &nbsp;·&nbsp; The protocol</p>
+    <h2>What the job actually is</h2>
+
+    <p>
+      None of the seven demonstrations is a surprising piece of mathematics. They are surprises about
+      how much we trust the first number we compute, and that trust is the part of the job that
+      separates a report from an analysis.
+    </p>
+    <p>
+      Descriptive statistics answer the question &ldquo;what is the value of this quantity&rdquo;. They
+      cannot answer &ldquo;what does this quantity mean&rdquo;, because meaning depends on shape, on
+      groups and on the decision being made. Someone has to look. In most organisations that someone is
+      the analyst, and the reason it matters is that the summary statistics will never ask for a second
+      look on their own. They are always confident.
+    </p>
+
+    <div class="callout key">
+      <div class="label"><i class="fas fa-list-check"></i> Ten checks before a summary leaves your desk</div>
+      <ol class="checklist">
+        <li><strong>Draw the distribution before you quote its mean.</strong> A histogram takes ten seconds and settles most of the questions in this article.</li>
+        <li><strong>Never report a mean without n and its median.</strong> Two numbers turn a fragment into a description.</li>
+        <li><strong>Add the quartiles, the minimum and the maximum.</strong> The interquartile range survives the outliers that inflate the standard deviation.</li>
+        <li><strong>Ask whether the mean is a place anyone actually is.</strong> If it lands in a gap between two humps, the mean describes nobody and the two humps are the story.</li>
+        <li><strong>For any relationship, plot first and compute second.</strong> Then report the correlation with n, the rank correlation, and the influence of the most consequential observations.</li>
+        <li><strong>Look for curvature, thresholds and clusters.</strong> A quadratic term, a regime change or two blobs will each defeat a correlation in a different way.</li>
+        <li><strong>Stratify before you pool.</strong> If you know a variable that affects both group membership and the outcome, compute the statistic inside the groups as well as across them.</li>
+        <li><strong>When a trend is reported, ask whether the shape moved, not just the centre.</strong> Growing tails and new humps are operational signals and they are invisible in a median.</li>
+        <li><strong>Test the robustness of the headline.</strong> Recompute without the top and bottom percentile. If the conclusion changes, your conclusion was about the extremes, so say so.</li>
+        <li><strong>Keep the picture next to the number.</strong> A dashboard showing a mean should carry a link to its distribution, and a report should show both.</li>
+      </ol>
+    </div>
+
+    <h3>The awkward part, in plain terms</h3>
+    <p>
+      This is judgement work rather than software work, and it is where domain knowledge earns its
+      place. Nothing in a query engine will tell you that the response time distribution has turned
+      bimodal because a new ticket type arrived, or that the admissions aggregate mixes departments
+      with wildly different capacity. A statistician with no context can compute every number in this
+      article correctly and still miss every single one of the seven points, because the seven points
+      are all questions about the world rather than about the arithmetic.
+    </p>
+    <p>
+      The EDA habit worth building is a short reflexive pause between getting a number and reporting a
+      number. Why is it that size. What would make it wrong. What is the picture behind it. What
+      changes in my recommendation if the picture is not what I assumed. Nine times out of ten the
+      pause costs a minute and changes nothing. The tenth time it changes the decision, and nobody
+      notices the nine, which is why the habit is hard to acquire and worth keeping.
+    </p>
+
+    <div class="callout method">
+      <div class="label"><i class="fas fa-terminal"></i> The whole workflow, in code</div>
+      <pre><code>import pandas as pd
+import plotly.express as px
+
+df = pd.read_csv("data/same_mean_sd_twins.csv")
+
+# 1. the summary you were about to report
+summary = df.groupby("dataset")["value"].agg(["mean", "std", "median", "count"])
+
+# 2. the five numbers that spare you an argument
+quartiles = df.groupby("dataset")["value"].describe(percentiles=[.25, .5, .75])
+
+# 3. the check nobody does: is this distribution even one distribution?
+fig = px.histogram(df, x="value", facet_col="dataset", facet_col_wrap=3,
+                   nbins=45, color="dataset", height=560)
+fig.show()
+
+# 4. and for a relationship, picture before coefficient
+scatter = px.scatter(df_xy, x="x", y="y", trendline="ols", color="group")
+scatter.show()</code></pre>
+      <p>
+        Three lines of pandas and two charts. That is the entire intervention. The reason it does not
+        happen is not that it is difficult, it is that the summary arrives first and looks finished.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 10. REPO ===================== -->
+<section id="repo">
+  <div class="wrap">
+    <p class="secnum">10 &nbsp;·&nbsp; Reproduce it</p>
+    <h2>Every number here is generated from a public repository</h2>
+    <p>
+      The datasets, the generators and the figures were built with Python, NumPy, pandas and Plotly.
+      Nothing in this article was typed by hand: the tables are generated from the same JSON the figures
+      read, so if a number and a chart ever disagree, the build would break.
+    </p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>File in <code>data/</code></th><th>What it demonstrates</th><th>Rows</th></tr></thead>
+        <tbody>
+          <tr><td>anscombe_quartet.csv</td><td>The 1973 original, four sets, identical to two decimal places</td><td>44</td></tr>
+          <tr><td>same_stats_shapes.csv</td><td>Twelve shapes, statistics identical to 15 decimal places</td><td>1,704</td></tr>
+          <tr><td>datasaurus_dozen.csv</td><td>The published Datasaurus Dozen, thirteen shapes</td><td>1,846</td></tr>
+          <tr><td>same_mean_sd_twins.csv</td><td>Six distributions, mean 50.00, standard deviation 10.00</td><td>2,400</td></tr>
+          <tr><td>same_boxplot.csv</td><td>Six datasets, one identical five-number summary</td><td>606</td></tr>
+          <tr><td>same_correlation.csv</td><td>Five relationships, one correlation of 0.7000</td><td>1,000</td></tr>
+          <tr><td>circle_r_zero.csv</td><td>A perfect relationship with a correlation of zero</td><td>400</td></tr>
+          <tr><td>simpson_berkeley_1973.csv</td><td>Real admissions data, aggregate reverses by department</td><td>12</td></tr>
+          <tr><td>simpson_schools.csv</td><td>Revision and scores, positive within schools, negative pooled</td><td>120</td></tr>
+          <tr><td>gapminder_2007.csv</td><td>Real GDP and life expectancy, ecological fallacy</td><td>142</td></tr>
+          <tr><td>penguins.csv</td><td>Real measurement data, pooled versus within-species correlation</td><td>342</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tcap">
+      Plus <code>data/summary_statistics.json</code>, the verification report that every table in this
+      article is built from.
+    </p>
+
+    <h3>Running it</h3>
+    <pre><code>git clone https://github.com/AbdoDameen/same-stats-different-graphs.git
+cd same-stats-different-graphs
+
+uv venv --python 3.11 .venv
+uv pip install --python .venv/bin/python numpy pandas scipy plotly kaleido matplotlib
+
+.venv/bin/python scripts/01_make_datasets.py   # builds data/ and verifies every claim
+.venv/bin/python scripts/02_build_figures.py   # builds the figures and the tables
+.venv/bin/python scripts/03_build_article.py   # assembles this page</code></pre>
+    <p>
+      <code>01_make_datasets.py</code> prints its own verification: the maximum spread across the twelve
+      identical datasets, the five-number summaries, every correlation. If the arithmetic in this
+      article were wrong, the script would say so before I could publish it.
+    </p>
+
+    <h3>Attribution</h3>
+    <p>
+      The Anscombe quartet and the Datasaurus Dozen are redistributed here for study, from the
+      published sources cited below. The Berkeley admissions table is the six-department table from
+      Bickel, Hammel and O'Connell (1975). The Gapminder and Palmer Station penguin data are the
+      public datasets of those projects. Everything else was generated by the scripts in this
+      repository from seeded random draws, which means you can rebuild each of them to the last digit.
+    </p>
+    <p>
+      Code is released under the MIT licence. Datasets are released under CC BY 4.0, with attribution
+      to the original authors above. If you reuse the article itself, a link back is appreciated.
+    </p>
+
+    <div class="callout real">
+      <div class="label"><i class="fas fa-comments"></i> One last argument</div>
+      <p>
+        The seven demonstrations in this article are all cases where a true number produced a false
+        impression. None of them required bad faith, sloppy work or a hidden agenda. They required only
+        that someone report the summary and stop. That is the whole failure mode, and it is available
+        to all of us on any Tuesday afternoon, with any dataset, and it is cheap to avoid.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REFERENCES ===================== -->
+<section id="references">
+  <div class="wrap">
+    <p class="secnum">References</p>
+    <h2>Sources</h2>
+    <ol class="refs">
+      <li><b>Anscombe, F. J. (1973).</b> Graphs in Statistical Analysis. <em>The American Statistician</em>, 27(1), 17&ndash;21. The four datasets, the identical regressions and the argument for looking.</li>
+      <li><b>Matejka, J. and Fitzmaurice, G. (2017).</b> Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing. <em>Proceedings of CHI 2017</em>. DOI <a href="https://dl.acm.org/doi/10.1145/3025453.3025912">10.1145/3025453.3025912</a>. The Datasaurus Dozen, the boxplot and violin examples, and the perturbation method.</li>
+      <li><b>Autodesk Research (2017).</b> Same Stats, Different Graphs, project page with datasets, animations and source code. <a href="https://www.research.autodesk.com/publications/same-stats-different-graphs/">research.autodesk.com/publications/same-stats-different-graphs</a>.</li>
+      <li><b>Cairo, A. (2016).</b> Download the Datasaurus: Never trust summary statistics alone; always visualize your data. <em>The Functional Art</em>. The original dinosaur.</li>
+      <li><b>Bickel, P. J., Hammel, E. A. and O'Connell, J. W. (1975).</b> Sex Bias in Graduate Admissions: Data from Berkeley. <em>Science</em>, 187(4175), 398&ndash;404. The source of the admissions table.</li>
+      <li><b>Simpson, E. H. (1951).</b> The Interpretation of Interaction in Contingency Tables. <em>Journal of the Royal Statistical Society, Series B</em>, 13(2), 238&ndash;241. The result now called Simpson's paradox.</li>
+      <li><b>Tukey, J. W. (1977).</b> <em>Exploratory Data Analysis</em>. Addison-Wesley. The origin of the boxplot and of the habit of looking before calculating.</li>
+      <li><b>Tufte, E. R. (1983).</b> <em>The Visual Display of Quantitative Information</em>. Graphics Press. On what a chart can carry that a table cannot.</li>
+      <li><b>Gapminder Foundation.</b> GDP per capita and life expectancy by country, 2007. <a href="https://www.gapminder.org/data/">gapminder.org/data</a>.</li>
+      <li><b>Gorman, K. B., Williams, T. D. and Fraser, W. R. (2014).</b> Ecological Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins. <em>PLoS ONE</em>, 9(3). Palmer Station LTER penguin measurements.</li>
+    </ol>
+
+    <h3>How to cite this article</h3>
+    <pre><code>Dameen, A. (2026). Same Numbers, Different Stories.
+Dameen Analytics. https://github.com/AbdoDameen/same-stats-different-graphs</code></pre>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="inner">
+    <div>
+      <h4>Dameen Analytics</h4>
+      <p>
+        Data analysis, visualisation and reporting. I work on the part of the job that happens after
+        the query returns, which is deciding what the numbers are actually saying.
+      </p>
+    </div>
+    <div>
+      <h4>In this article</h4>
+      <p>
+        <a href="#anscombe">Anscombe's quartet</a><br>
+        <a href="#exact">Twelve identical datasets</a><br>
+        <a href="#boxplot">The boxplot mirage</a><br>
+        <a href="#simpson">Simpson's paradox</a><br>
+        <a href="#protocol">The ten checks</a>
+      </p>
+    </div>
+    <div>
+      <h4>Code and data</h4>
+      <p>
+        <a href="https://github.com/AbdoDameen/same-stats-different-graphs">github.com/AbdoDameen/same-stats-different-graphs</a><br>
+        Every dataset, generator and figure used on this page.
+      </p>
+    </div>
+  </div>
+  <div class="fine">
+    &copy; 2026 Dameen Analytics. Written by Abdelrhman Dameen. Datasets redistributed for study with
+    attribution to the original authors; generated datasets are released under CC BY 4.0 and the code
+    under the MIT licence.
+  </div>
+</footer>
+
+<script>
+// reading progress
+const bar = document.getElementById('progress');
+const onScroll = () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+};
+document.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+// keep plots responsive when the page is resized
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.plotly-graph-div').forEach(el => { try { Plotly.Plots.resize(el); } catch (e) {} });
+});
+</script>
+</body>
+</html>
